@@ -1,0 +1,32 @@
+name: sublime-text
+version: '3.0-3143'
+summary: A sophisticated text editor for code, markup and prose
+description: |
+        Sublime Text is built from custom components, providing for unmatched
+        responsiveness. From a powerful, custom cross-platform UI toolkit, to an
+        unmatched syntax highlighting engine, Sublime Text sets the bar for
+        performance.
+
+grade: devel
+confinement: devmode
+
+architectures:
+    - amd64
+
+icon: meta/sublime-text.png
+
+apps:
+  sublime-text:
+    command: desktop-launch $SNAP/sublime_text
+    plugs:
+      - home
+      - mount-observe
+      - desktop
+
+parts:
+  sublime-text:
+    plugin: dump
+    source: https://download.sublimetext.com/sublime_text_3_build_3143_x64.tar.bz2
+    source-type: tar
+    after:
+      - desktop-gtk3
